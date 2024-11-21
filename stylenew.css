@@ -12,7 +12,18 @@ body {
     color: #333;
     line-height: 1.6;
 }
-/* Style for round image */
+a {
+    color: rgb(0, 0, 0);
+}
+a:hover {
+    color: rgba(0, 0, 0, 0.607);
+}
+a:visited {
+    color: rgb(0, 0, 0);
+}
+a:active {
+    color: rgb(0,0,0);
+}
 .profile-img {
     width: 150px;
     height: 150px;
@@ -66,7 +77,7 @@ ul li {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #3a85e7;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -74,11 +85,10 @@ ul li {
 }
 
 .btn:hover {
-    background-color: #0077b5; /* For LinkedIn button */
+    background-color: #00aeff; /* For LinkedIn button */
     color: #fff;
-    transition: 0.3s ease;
-}
-
+    transition: 0.5s ease;
+}  
 footer {
     background: #333;
     color: #fff;
@@ -98,4 +108,3 @@ footer {
 #social-media a:hover {
     color: #007bff;
 }
-S
