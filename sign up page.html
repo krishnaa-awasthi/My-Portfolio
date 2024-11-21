@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact page</title>
+    <link href="signupcss.css" rel="stylesheet">
+    <style>
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 90%;
+    max-width: 570px;
+    background-color: #1a202c;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: popup-animation 0.4s forwards;
+    opacity: 0; /* Start hidden for animation effect */
+}
+
+/* Animation for Popup */
+@keyframes popup-animation {
+    from {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 30;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Popup Header Text */
+#popup h3 {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Popup Divider */
+#popup span {
+    background-color: #007bff;
+    display: block;
+    margin: 0 auto 30px auto;
+    width: 90px;
+    height: 1px;
+    border-radius: 2px;
+}
+
+/* Popup Body Text */
+#popup p {
+    color: #cbd5e1;
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Close Button */
+#popup button {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    width: 50%;
+    padding: 15px;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    margin: 0 auto; /* Center the button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#popup button:hover {
+    background-color: rgba(58, 141, 237, 0.827);
+}
+
+/* Background Overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    z-index: 999;
+    display: none; /* Hidden initially */
+}
+    </style>
+</head>
+<body>
+    <!-- Go Back Button-->
+    <button class="cursor-pointer duration-200 hover:scale-125 active:scale-100" title="Home Page" onclick="window.location.href='index.html';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24" class="stroke-blue-300">
+            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" d="M11 6L5 12M5 12L11 18M5 12H19"></path>
+        </svg>
+    </button>
+<header>
+    <h2>Glad to see you here!</h2>
+    <p>Fill your contact details below</p>
+</header>
+<br>
+<main>
+    <form id="contactForm">
+        <label for="username">Name:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number (+91):</label>
+        <input type="tel" id="phone" name="phone">
+        
+        <label for="state">State:</label>
+        <select id="state" name="state">
+            <option selected disabled>--Select State--</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Ladakh">Ladakh</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Puducherry">Puducherry</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>    
+        </select>
+        <label for="city">City:</label>
+        <select id="city" name="city">
+            <option selected disabled>--Select City--</option>
+        </select>
+        <script>
+            const stateCities = {
+                "Andaman and Nicobar Islands": ["Port Blair", "Havelock Island", "Neil Island"],
+                "Andhra Pradesh": ["Amaravati", "Visakhapatnam", "Vijayawada", "Tirupati", "Guntur", "Kakinada"],
+                "Arunachal Pradesh": ["Itanagar", "Naharlagun", "Pasighat", "Tezpur"],
+                "Assam": ["Guwahati", "Dibrugarh", "Silchar", "Nagaon", "Tezpur", "Jorhat"],
+                "Bihar": ["Patna", "Gaya", "Bhagalpur", "Purnia", "Darbhanga"],
+                "Chandigarh": ["Chandigarh"],
+                "Chhattisgarh": ["Raipur", "Bhilai", "Durg", "Bilaspur", "Korba"],
+                "Dadra and Nagar Haveli and Daman and Diu": ["Daman", "Diu", "Silvassa"],
+                "Delhi": ["New Delhi", "Delhi", "Dwarka", "Janakpuri", "Karol Bagh"],
+                "Goa": ["Panaji", "Margao", "Mapusa", "Ponda"],
+                "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Anand", "Bhavnagar"],
+                "Haryana": ["Chandigarh", "Gurgaon", "Faridabad", "Ambala", "Hisar"],
+                "Himachal Pradesh": ["Shimla", "Dharamshala", "Kullu", "Manali", "Solan"],
+                "Jammu and Kashmir": ["Srinagar", "Jammu", "Leh", "Kargil"],
+                "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro"],
+                "Karnataka": ["Bangalore", "Mysore", "Mangalore", "Hubli", "Dharwad"],
+                "Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Kollam"],
+                "Lakshadweep": ["Kavaratti", "Minicoy"],
+                "Ladakh": ["Leh", "Kargil"],
+                "Madhya Pradesh": ["Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain"],
+                "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad"],
+                "Manipur": ["Imphal", "Thoubal"],
+                "Meghalaya": ["Shillong", "Tura"],
+                "Mizoram": ["Aizawl", "Lunglei"],
+                "Nagaland": ["Kohima", "Dimapur"],
+                "Odisha": ["Bhubaneswar", "Cuttack", "Sambalpur", "Berhampur"],
+                "Puducherry": ["Puducherry"],
+                "Punjab": ["Chandigarh", "Amritsar", "Ludhiana", "Jalandhar"],
+                "Rajasthan": ["Jaipur", "Udaipur", "Jodhpur", "Ajmer"],
+                "Sikkim": ["Gangtok"],
+                "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli"],
+                "Telangana": ["Hyderabad", "Warangal", "Khammam"],
+                "Tripura": ["Agartala", "Unakoti"],
+                "Uttar Pradesh": ["Lucknow","Kanpur","Varanasi","Agra","Meerut","Prayagraj","Ghaziabad","Noida","Gorakhpur","Bareilly","Aligarh","Moradabad","Saharanpur","Jhansi","Firozabad"],
+                "Uttarakhand": ["Dehradun", "Haridwar", "Rishikesh"],
+                "West Bengal": ["Kolkata", "Siliguri", "Howrah", "Durgapur"]
+            };
+            const stateDropdown = document.getElementById('state');
+            const cityDropdown = document.getElementById('city');
+            stateDropdown.addEventListener('change', function() {
+                cityDropdown.innerHTML = '<option selected disabled>--Select City--</option>';
+                const selectedState = stateDropdown.value;
+                if (stateCities[selectedState]) {
+                    stateCities[selectedState].forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city;
+                        option.text = city;
+                        cityDropdown.add(option);
+                    });
+                }
+            });
+        </script>
+        <label><input type="checkbox" required> I hereby affirm that the information I have provided is accurate and may be utilized by the administration for contact purposes.
+            Terms and conditions apply.</label>
+        <br><br>
+        <button type="submit" onclick="showPopup()">Submit</button>
+    </form>
+    <div id="overlay"></div>
+    <!-- Pop-Up Widget -->
+    <div id="popup">
+        <h3>Submission Successful!</h3>
+        <p>Thank you for submitting your contact details.</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+</main>
+<br><br>
+<script>
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        popup.style.display = 'flex';
+        overlay.style.display = 'block';
+        showPopup();
+    });
+
+    function showPopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'flex';
+        setTimeout(() => window.location.href = "index.html", 2000);
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+        popup.style.display = 'none';
+    }
+</script>
+</body>
+</html>
